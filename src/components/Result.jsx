@@ -5,19 +5,17 @@ import ResultBox from "./ResultBox";
 function Result(props) {
 	const users = useContext(UserContext);
 	return (
-		<div className="container-fluid">
-			<div className="row">
-				{users.map((user) => {
-					return (
-						<ResultBox
-							key={user._id}
-							id={user._id}
-							name={user.username}
-							email={user.email}
-						/>
-					);
-				})}
-			</div>
+		<div className="row">
+			{users.map((user) => {
+				return (
+					<ResultBox
+						key={user._id}
+						id={user._id}
+						name={user.username}
+						email={user.email}
+					/>
+				);
+			})}
 		</div>
 	);
 }

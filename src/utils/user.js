@@ -10,8 +10,11 @@ export default class User {
 		}
 	}
 
-	async addUser() {
-        
+	async addUser(username, email) {
+		await axios.post(process.env.REACT_APP_BASE_URL + "user/add", {
+			username,
+			email,
+		});
 		return this.getUsers();
 	}
 

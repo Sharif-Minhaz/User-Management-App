@@ -2,25 +2,42 @@ import React from "react";
 
 function UserForm(props) {
 	return (
-		<form onSubmit={props.handleSubmit}>
-			<input
-				value={props.name}
-				onChange={props.handleChange}
-				name="name"
-				type="text"
-				placeholder="Enter username"
-				required
-			/>
-			<input
-				value={props.email}
-				onChange={props.handleChange}
-				name="password"
-				type="email"
-				placeholder="Enter email"
-				required
-			/>
-			<button type="submit">Add</button>
-		</form>
+		<div className="row">
+			<div className="col-md-6 col-12">
+				<form onSubmit={props.handleSubmit}>
+					<div className="form-floating mb-3">
+						<input
+							type="text"
+							name="name"
+							onChange={props.handleChange}
+							value={props.username}
+							className="form-control"
+							id="floatingInput"
+							placeholder="name"
+							required
+						/>
+						<label htmlFor="floatingInput">Username</label>
+					</div>
+
+					<div className="form-floating">
+						<input
+							value={props.email}
+							type="email"
+							onChange={props.handleChange}
+							className="form-control"
+							name="password"
+							id="floatingPassword"
+							placeholder="Email"
+							required
+						/>
+						<label htmlFor="floatingPassword">Email Address</label>
+					</div>
+					<button className="btn btn-primary mt-3" type="submit">
+						Add
+					</button>
+				</form>
+			</div>
+		</div>
 	);
 }
 
