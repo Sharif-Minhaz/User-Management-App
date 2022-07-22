@@ -8,7 +8,12 @@
 	margin-bottom: 24px;
 }
 
-@media (max-width: 500px){
+.bg-blue {
+	background-color: #302ea1;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+@media (max-width: 500px) {
 	.box-gap {
 		margin-bottom: 12px;
 	}

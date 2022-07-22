@@ -22,7 +22,8 @@ export default class User {
 		return this.getUsers();
 	}
 
-	deleteUser(id) {
+	async deleteUser(id) {
+		await axios.delete(process.env.REACT_APP_BASE_URL + "user/delete/" + id);
 		return this.getUsers();
 	}
 }

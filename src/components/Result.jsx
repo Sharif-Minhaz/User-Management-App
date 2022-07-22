@@ -3,10 +3,10 @@ import UserContext from "../contexts/UserContext";
 import ResultBox from "./ResultBox";
 
 function Result(props) {
-	const users = useContext(UserContext);
+	const res = useContext(UserContext);
 	return (
 		<div className="row">
-			{users.map((user) => {
+			{res.users.map((user) => {
 				return (
 					<ResultBox
 						key={user._id}
