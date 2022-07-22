@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback, createRef } from "react";
 import User from "../utils/User";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 import UserContext from "../contexts/UserContext";
 import Loading from "./Loading";
 import UserForm from "./UserForm";
@@ -47,6 +49,7 @@ function UserManagement(props) {
 			.then((data) => {
 				setUsers(data);
 				setIsLoading(false);
+				toast.success("User added successfully!");
 			})
 			.catch((error) => {
 				handleError(error);
@@ -67,6 +70,7 @@ function UserManagement(props) {
 		setUsername("");
 		setEmail("");
 		setId("");
+		setUpdateBtn(false);
 	};
 
 	const updateUserInputBox = (id) => {
@@ -90,7 +94,16 @@ function UserManagement(props) {
 			.then((data) => {
 				setUsers(data);
 				resetForm();
-				setUpdateBtn(false);
+				allUsers
+					._findUsers(id)
+					.then((data) => {
+						data?.username
+							? toast.info("User info updated successfully!")
+							: toast.error("User not found!");
+					})
+					.catch((error) => {
+						handleError(error);
+					});
 				setIsLoading(false);
 			})
 			.catch((error) => {
@@ -104,6 +117,7 @@ function UserManagement(props) {
 			.deleteUser(id)
 			.then(() => {
 				fetchData();
+				toast.error("User deleted successfully");
 			})
 			.catch((error) => {
 				handleError(error);
@@ -117,12 +131,14 @@ function UserManagement(props) {
 	return (
 		<UserContext.Provider value={{ users, deleteUser, updateUserInputBox }}>
 			<div ref={formTop} className="container py-4">
+				<ToastContainer autoClose={3000} />
 				<h2 className="mb-4">User Form</h2>
 				<UserForm
 					username={username}
 					email={email}
 					id={id}
 					updateBtn={updateBtn}
+					resetForm={resetForm}
 					handleChange={handleChange}
 					handleSubmit={handleSubmit}
 					updateUserInfo={updateUserInfo}

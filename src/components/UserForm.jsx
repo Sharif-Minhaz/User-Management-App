@@ -34,13 +34,22 @@ function UserForm(props) {
 						<input type="hidden" value={props.id} />
 					</div>
 					{props.updateBtn ? (
-						<button
-							type="button"
-							className="btn btn-success mt-3"
-							onClick={() => props.updateUserInfo(props.id)}
-						>
-							Update
-						</button>
+						<>
+							<button
+								type="button"
+								className="btn btn-success mt-3 me-2"
+								onClick={() => props.updateUserInfo(props.id)}
+							>
+								Update
+							</button>
+							<button
+								type="button"
+								className="btn btn-danger mt-3"
+								onClick={props.resetForm}
+							>
+								Cancel
+							</button>
+						</>
 					) : (
 						<button className="btn btn-primary mt-3" type="submit">
 							Add
