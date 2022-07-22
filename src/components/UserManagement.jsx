@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, createRef } from "react";
-import User from "../utils/User";
+import User from "../utils/user";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import UserContext from "../contexts/UserContext";
