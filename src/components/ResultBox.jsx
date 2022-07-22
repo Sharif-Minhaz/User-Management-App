@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import UserContext from "../contexts/UserContext";
 
-function ResultBox(props) {
+const ResultBox = React.forwardRef((props, ref) => {
 	const res = useContext(UserContext);
 	return (
 		<div className="col-xl-4 col-md-6 col-12 box-gap">
@@ -10,7 +10,13 @@ function ResultBox(props) {
 				<p className="text-light card-text">Username: {props.name}</p>
 				<p className="text-light card-text">Email Add: {props.email}</p>
 				<div className="mt-1">
-					<button className="btn btn-info me-2">Edit</button>
+					<button
+						ref={ref}
+						onClick={() => res.updateUserInputBox(props.id)}
+						className="btn btn-info me-2"
+					>
+						Edit
+					</button>
 					<button onClick={() => res.deleteUser(props.id)} className="btn btn-danger">
 						Delete
 					</button>
@@ -18,6 +24,6 @@ function ResultBox(props) {
 			</div>
 		</div>
 	);
-}
+});
 
 export default ResultBox;

@@ -31,10 +31,21 @@ function UserForm(props) {
 							required
 						/>
 						<label htmlFor="floatingPassword">Email Address</label>
+						<input type="hidden" value={props.id} />
 					</div>
-					<button className="btn btn-primary mt-3" type="submit">
-						Add
-					</button>
+					{props.updateBtn ? (
+						<button
+							type="button"
+							className="btn btn-success mt-3"
+							onClick={() => props.updateUserInfo(props.id)}
+						>
+							Update
+						</button>
+					) : (
+						<button className="btn btn-primary mt-3" type="submit">
+							Add
+						</button>
+					)}
 				</form>
 			</div>
 		</div>

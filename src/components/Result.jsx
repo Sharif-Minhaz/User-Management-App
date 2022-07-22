@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import UserContext from "../contexts/UserContext";
 import ResultBox from "./ResultBox";
 
-function Result(props) {
+const Result = React.forwardRef((props, ref) => {
 	const res = useContext(UserContext);
 	return (
 		<div className="row">
@@ -13,11 +13,12 @@ function Result(props) {
 						id={user._id}
 						name={user.username}
 						email={user.email}
+						ref={ref}
 					/>
 				);
 			})}
 		</div>
 	);
-}
+});
 
 export default Result;
